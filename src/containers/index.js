@@ -39,7 +39,7 @@ return (
   </Header>
   <IndexHeader />
   <Content style={{ padding: '0 50px',display:'flex',columnCount:'2',flexFlow:'row wrap',alignItems:'flex-start'}}>
-  <Card title="学习记录"  extra={<a onClick={toogleAddSummeryTreeVisible}>添加</a>}>
+  <Card title="学习记录" className="overflow-x-hidden"  extra={<a onClick={toogleAddSummeryTreeVisible}>添加</a>}>
     <SummeryTree style={{overflow:'scroll',maxHeight:'30vh',maxWidth:'33.3vw'}}/>
     <AddSummeryTree visible={addSummeryTreeVisible} triggerVisible={toogleAddSummeryTreeVisible}/>
     </Card>

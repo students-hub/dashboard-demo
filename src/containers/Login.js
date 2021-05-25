@@ -2,8 +2,8 @@ import {useState} from 'react'
 import { Layout,Checkbox,Button,Typography,Form,Input } from 'antd';
 import './Login.scss'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-const { Header, Footer, Content  } = Layout;
-const { Title,Text } = Typography;
+const { Footer, Content  } = Layout;
+const { Title } = Typography;
 function LoginContentHeader() {
     return (
         <div className="login-content-header">
@@ -48,9 +48,9 @@ const NormalLoginForm = () => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
   
-          <a className="login-form-forgot" href="#">
+          <div className="login-form-forgot" >
             Forgot password
-          </a>
+          </div>
         </Form.Item>
   
         <Form.Item>
