@@ -14,7 +14,7 @@ const IndexCurrentCourse=()=>{
         }, 2000);
     },[]);
 return (
-    <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
+    <Card  loading={loading}>
     <Meta
       avatar={
         <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
