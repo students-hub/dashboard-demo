@@ -1,3 +1,4 @@
+const path= require('path')
 module.exports = {
     style: {
       postcss: {
@@ -6,22 +7,29 @@ module.exports = {
         ],
       },
     },
-    webpack: (config) => {
-      config.output.library = `react-dashboard`;
-      config.output.libraryTarget = 'umd';
-      config.output.jsonpFunction = `webpackJsonp_react`;
-      config.output.globalObject = 'window';
-      return config;
+    webpack:{
+      configure: (webpackConfig, { env, paths })=>{
+        webpackConfig.output={
+          ...webpackConfig.output,
+          library : `react-dashboard`,
+          libraryTarget : 'umd',
+          jsonpFunction : `webpackJsonp_react`,
+          globalObject : 'window',
+    publicPath: '/child/react/',
+    path: path.resolve(__dirname,"dist/react")
+        }
+        paths.appBuild=path.resolve(__dirname,"dist/react")
+        return webpackConfig
+      }
     },
-    devServer: (_) => {
-      const config = _;
-      config.headers = {
+    devServer:{
+      port:3031,
+      headers : {
         'Access-Control-Allow-Origin': '*',
-      };
-      config.historyApiFallback = true;
-      config.hot = false;
-      config.watchContentBase = false;
-      config.liveReload = false;
-      return config;
-    },
+      },
+      historyApiFallback : true,
+      hot : false,
+      watchContentBase : false,
+      liveReload : false
+    }
   }
