@@ -50,14 +50,12 @@ const routes = [
 const content = (
   <>
      <Descriptions size="small" column={2}>
-    <Descriptions.Item label="姓名">Lili Qu</Descriptions.Item>
-    <Descriptions.Item label="Association">
-      <a>421421</a>
+    <Descriptions.Item label="学号">
+      <a>2018302060083</a>
     </Descriptions.Item>
-    <Descriptions.Item label="Creation Time">2017-01-10</Descriptions.Item>
-    <Descriptions.Item label="Effective Time">2017-10-10</Descriptions.Item>
-    <Descriptions.Item label="Remarks">
-      Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
+    <Descriptions.Item label="剩余课程">2</Descriptions.Item>
+    <Descriptions.Item label="宿舍">
+      信息学部13舍 201宿舍
     </Descriptions.Item>
   </Descriptions>
   </>
@@ -78,7 +76,7 @@ const IndexHeader= () => (
     tags={<Tag color="blue">学生</Tag>}
     extra={[
       <Button key="1" type="primary">
-        Primary
+        信箱
       </Button>,
       <DropdownMenu key="more" />,
     ]}
