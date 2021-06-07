@@ -14,13 +14,16 @@ module.exports = {
           library : `react-dashboard`,
           libraryTarget : 'umd',
           jsonpFunction : `webpackJsonp_react`,
-          globalObject : 'window'
+          globalObject : 'window',
+    publicPath: '/child/react/',
+    path: path.resolve(__dirname,"dist/react")
         }
         paths.appBuild=path.resolve(__dirname,"dist/react")
         return webpackConfig
       }
     },
     devServer:{
+      port:3031,
       headers : {
         'Access-Control-Allow-Origin': '*',
       },

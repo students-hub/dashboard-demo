@@ -17,7 +17,7 @@ const content = (
     <p>详细内容</p>
   </div>
 );
-let AddForm=()=>{
+let AddForm=({handleAdd})=>{
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -26,7 +26,7 @@ let AddForm=()=>{
     wrapperCol: { offset: 8, span: 16 },
   };
   const onFinish = (values) => {
-    console.log('Success:', values);
+    handleAdd({time:values.time,title:values.title})
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -60,7 +60,7 @@ let AddForm=()=>{
       rules={[{ required: true, message: '详细记录' }]}
     >
        <TextArea
-          placeholder="Autosize height with minimum and maximum number of lines"
+          placeholder="关于这节课程有什么想要说的呢"
           autoSize={{ minRows: 2, maxRows: 6 }}
         />
     </Form.Item>
@@ -77,19 +77,19 @@ let AddForm=()=>{
   </Form>
   )
 }
- let SummeryTree = ({data})=>{
+ let SummeryTree = ({his})=>{
      return (
-  <Timeline mode="alternate" style={{"min-height":"200px"}}>
-    <Popover content={content} title="授课信息">
-    <Timeline.Item color="green">复习嵌入式 2021-06-05</Timeline.Item>
-    </Popover>
-    <Popover content={content} title="Title">
-    <Timeline.Item color="green">Solve initial network problems 2021-06-05</Timeline.Item>
-    </Popover>
-    <Timeline.Item color="green">编译原理实验 2021-06-04</Timeline.Item>
+  <Timeline mode="alternate" style={{"minHeight": "200px"}}>
+    {his.map((hiss,idx)=>{
+      return (   
+         <Popover key={idx} content={content} title="授课信息">
+      <Timeline.Item color="green">{hiss.title} {hiss.time}</Timeline.Item>
+      </Popover>
+      )
+    })}
   </Timeline>);
      }
-     const AddSummeryTree = ({visible,triggerVisible})=> {
+     const AddSummeryTree = ({visible,triggerVisible,handleAdd})=> {
       return (
           <Drawer
             title="添加记录"
@@ -100,19 +100,26 @@ let AddForm=()=>{
             getContainer={false}
             style={{ position: 'absolute' }}
           >
-           <AddForm />
+           <AddForm handleAdd={handleAdd}/>
           </Drawer>
       );
   }
      let CombinedSummeryTree = ()=>{
       const [addSummeryTreeVisible,setaddSummeryTreeVisible] =useState(true);
+      const [his,setHis] = useState([{"time":'2021-06-05'
+      ,"title":"复习嵌入式"},{"time":'2021-06-05'
+      ,"title":"Solve initial network problems"}]);
+      function handleAdd({time,title}){
+        setHis([...his,{time,title}]);
+        toogleAddSummeryTreeVisible();
+      }
       function toogleAddSummeryTreeVisible() {
         setaddSummeryTreeVisible(!addSummeryTreeVisible)
       }
         return (
           <Card title="学习记录" className="overflow-x-hidden"  extra={<span onClick={toogleAddSummeryTreeVisible}>添加</span>}>
-          <SummeryTree />
-          <AddSummeryTree visible={addSummeryTreeVisible} triggerVisible={toogleAddSummeryTreeVisible}/>
+          <SummeryTree his={his} />
+          <AddSummeryTree handleAdd={handleAdd} visible={addSummeryTreeVisible} triggerVisible={toogleAddSummeryTreeVisible}/>
           </Card>
         )
       }

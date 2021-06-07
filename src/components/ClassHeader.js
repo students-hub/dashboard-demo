@@ -1,18 +1,15 @@
-import { PageHeader, Tabs, Button, Statistic, Descriptions } from 'antd';
+import { PageHeader, Tabs, Button, Statistic, Descriptions,Card  } from 'antd';
 
 const { TabPane } = Tabs;
 
 const renderContent = (column = 2) => (
   <Descriptions size="small" column={column}>
-    <Descriptions.Item label="Created">Lili Qu</Descriptions.Item>
-    <Descriptions.Item label="Association">
-      <span>421421</span>
+    <Descriptions.Item label="学分">2.5</Descriptions.Item>
+    <Descriptions.Item label="地点">
+      <span>3区1-321</span>
     </Descriptions.Item>
-    <Descriptions.Item label="Creation Time">2017-01-10</Descriptions.Item>
-    <Descriptions.Item label="Effective Time">2017-10-10</Descriptions.Item>
-    <Descriptions.Item label="Remarks">
-      Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
-    </Descriptions.Item>
+    <Descriptions.Item label="授课时间">周二下午</Descriptions.Item>
+    <Descriptions.Item label="授课老师">何璐璐</Descriptions.Item>
   </Descriptions>
 );
 
@@ -27,6 +24,13 @@ const extraContent = (
     <Statistic
       title="班级人数"
       value="53"
+      style={{
+        marginRight: 32,
+      }}
+    />
+      <Statistic
+      title="距离下次授课还有"
+      value="1"
       style={{
         marginRight: 32,
       }}
@@ -56,11 +60,17 @@ const ClassHeader = (props)=>{
       ]}
       footer={
         <Tabs defaultActiveKey="1">
-  <TabPane tab="Tab 1" key="1">
-      Content of Tab Pane 1
+  <TabPane tab="最近作业安排" key="1">
+      读后感
     </TabPane>
-    <TabPane tab="Tab 2" key="2">
-      Content of Tab Pane 2
+    <TabPane tab="班级公告" key="2">
+      期末：闭卷考试
+    </TabPane>
+    <TabPane tab="最近分享文件" key="3">
+    <Card title="期末复习资料.pdf" extra={<a href="./">打开</a>} style={{ width: 300 }}>
+    
+      <p>期末复习用</p>
+    </Card>
     </TabPane>
         </Tabs>
       }
