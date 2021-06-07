@@ -15,8 +15,8 @@ module.exports = {
           libraryTarget : 'umd',
           jsonpFunction : `webpackJsonp_react`,
           globalObject : 'window',
-   // publicPath: '/child/react/',
-    //path: path.resolve(__dirname,"dist/react")
+   publicPath: '/child/react/',
+    path: path.resolve(__dirname,"dist/react")
         }
         paths.appBuild=path.resolve(__dirname,"dist/react")
         return webpackConfig
